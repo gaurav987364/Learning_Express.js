@@ -1,0 +1,234 @@
+sabse phle hame package.json me script likhni hoti hai taki ham apne server ko start kar sake
+
+files to modify there:[
+ type:"module",
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+];
+
+now we have to make variable app and called the express function;
+
+
+
+
+Note::- make sure to save every file using ctrl+s because jab tak hme har chote se chote change ke baad save ni karege to it wont works ok
+
+packege no.1 => dotenv npm i dotenv
+=> this package loads the environment variable into the process.env.
+use krna acha hai is package ko kahi bar import export of env variable me issue ata haai.
+
+
+
+
+
+
+//GET request:-
+
+req:- it contains all the things which we send from client side like headers, cookies, query parameters etc...
+const {name,email,passsword} =  req.body;
+
+res:- it contains data things which we send to client side from server like status code, headers, body etc...
+res.status(200).send({our data});
+
+'/' means jab koi user is route ko visit karega server ka kaam hai res dena because ye ek get request ke tarah hai
+
+app.get("/",(req,res)=>{
+  res.send("Hello World");
+});
+
+"/api/users" :- it is industry practise that folow everyone for apis;
+
+
+
+
+
+
+//Route Params or parameters
+(basically kisi id ya name ya other info ke based par data return krna)
+
+hame validation pure tarike se likhna hota hai server side pe like id aygi string me to usko convert krege number me , or validate karege agar id proper number nahi hai to res(400) bad request ya id not valid ka
+more validate krege user ko ya data ko absed on id etc.
+
+app.get("/api/users/:id", (req,res)=>{
+  const id = parseInt(req.params.id)
+});
+
+
+
+
+
+
+//Query Params or parameters
+=> sabse phle to query parameters ko smjaho ye ? question mark ke baad se start hote hai or ye ek type se key=value pairs hoti hai always;jiske base par hm many actions perform karte hai ok
+
+https://localhost:4000/api/users?sort=name&value=gaurav
+//output from console.log(req.query) in server=>{ sort: 'name',value:"gaurav" }
+
+
+
+
+
+
+
+
+
+
+
+//POST request--
+
+it means we (client) send data to server an after validate that data server is store this into database; simple;
+just like get request we see response data in the console or browser we dont send data from browser to server we need to use tools like Postman and thunderclient extension in vs code ok;
+
+all of the data from client we recieve in the req.body always ok;
+
+so we make post request to server
+
+app.post("/api/users",(req,res)=>{
+  const {name,email,passsword} =  req.body;
+  // validate data here
+
+Note:-- Here is point to remember that when we send request from our client to our route and console.log(req.body) it print undefined to the console because express ko hame batana padega ki hm jo data bj rahe hai vo hm json me bj rahe hai to hme express me middleware setup krna padega 
+
+#app.use(express.json()); isko invoke krake is tarike se ok;;
+
+
+
+
+
+
+
+
+
+Q:-- Difference b/w Put and Patch req.???;
+
+PUT:->The PUT method is used for full updates. It completely replaces the current state of a resource with the data provided in the request.
+If a property is missing in the request body, it will be removed from the resource.
+
+eg:- we have one object in db;
+{ "name": "John", "age": 30, "city": "New York" }
+
+Now we send Put request with 
+{ "name": "John", "age": 31 }
+
+so the updated object is 
+{ "name": "John", "age": 31 }
+
+Patch:-The PATCH method is used for partial updates. It modifies only the specified fields in the resource without altering the rest.
+If a property is missing in the request body, it remains unchanged in the resource.
+
+eg:- we have one object in db;
+{ "name": "John", "age": 30, "city": "New York" }
+
+doing request with :
+{ "age": 31 }
+
+updated object is :
+{ "name": "John", "age": 31, "city": "New York" }
+
+In summary:
+
+==>>>> Use PUT when you want to replace the entire resource.
+==>>>> Use PATCH when you want to update specific parts of the resource.
+
+
+//PUT Request:-  done with these check code...
+//PATCH Request:- done with these check code...
+//DELETE Request:- done with these check code...
+
+
+
+
+
+
+
+status code and Errors types:-
+
+1xx: Informational:-
+
+1.) 100 (Continue): Indicates that the server has received the request headers and the client should continue sending the body.
+
+1.) 101 (Switching Protocols): The server is switching protocols, as requested by the client.
+
+2xx: Success:-
+
+2.) 200 (OK): The request was successful, and the server returned the desired resource.
+
+2.) 201 (Created): A resource was successfully created (commonly used for POST requests).
+
+2.) 202 (Accepted): The request has been accepted for processing but is not yet completed.
+
+2.) 204 (No Content): The request was successful, but there is no content to send back (used when deleting resources, for example).
+
+3xx: Redirection:-
+
+3.) 301 (Moved Permanently): The resource has been moved permanently to a new URL.
+
+3.) 302 (Found): The resource is temporarily located at a different URL.
+
+3.) 304 (Not Modified): Indicates that the cached version of the resource is still valid.
+
+4xx: Client Errors:-
+
+4.) 400 (Bad Request): The server cannot process the request due to a client-side error (e.g., invalid input).
+
+4.) 401 (Unauthorized): Authentication is required and has failed or has not been provided.
+
+4.) 403 (Forbidden): The client does not have permission to access the resource.
+
+4.) 404 (Not Found): The server cannot find the requested resource.
+
+4.) 405 (Method Not Allowed): The request method (e.g., GET, POST) is not supported for the resource.
+
+4.) 409 (Conflict): The request could not be completed due to a conflict with the current state of the resource (e.g., duplicate data).
+
+4.) 422 (Unprocessable Entity): The server understands the request but cannot process it due to semantic errors (e.g., validation failed).
+
+5xx: Server Errors:-
+
+5.) 500 (Internal Server Error): A generic error indicating that the server encountered an unexpected condition.
+
+5.) 501 (Not Implemented): The server does not support the functionality required to fulfill the request.
+
+5.) 502 (Bad Gateway): The server, acting as a gateway, received an invalid response from an upstream server.
+
+5.) 503 (Service Unavailable): The server is currently unavailable due to maintenance or overload.
+
+5.) 504 (Gateway Timeout): The server, acting as a gateway, did not receive a timely response from an upstream server.
+
+
+
+Common Errors in Express.js:
+Here are typical errors you might encounter when working with Express.js, along with tips on handling them:
+
+*Error: Cannot GET /route
+
+Occurs when the route is not defined. Check if the route is correctly configured.
+
+*Error: Request body is undefined
+
+Happens when middleware like express.json() or body-parser is not added to parse the request body.
+
+*CORS Error: No 'Access-Control-Allow-Origin' header
+
+Indicates that cross-origin resource sharing (CORS) is not configured. Use the cors middleware to resolve this.
+
+*Error: Cannot find module 'express'
+
+Caused by a missing dependency. Check if Express is installed (npm install express).
+
+*Unhandled Promise Rejection
+
+Occurs when a promise is not properly handled. Use .catch() or try-catch blocks for error handling.
+
+*Port Already in Use Error
+
+Happens when another process is using the same port. Either free the port or use a different one.
+
+*Error: Invalid Token
+
+Common in authentication systems (e.g., using JWT). Handle this with appropriate validation and error handling.
+
+*Middleware Order Issue
+
+Middleware not working as expected because of incorrect order. Ensure middleware is added in the correct sequence.
