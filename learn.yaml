@@ -14,10 +14,12 @@ now we have to make variable app and called the express function;
 
 Note::- make sure to save every file using ctrl+s because jab tak hme har chote se chote change ke baad save ni karege to it wont works ok
 
-packege no.1 => dotenv npm i dotenv
+📦packege no.1 => dotenv npm i dotenv
 => this package loads the environment variable into the process.env.
 use krna acha hai is package ko kahi bar import export of env variable me issue ata haai.
 
+📦Packege no.2 => concurrently npm i concurrently
+=> this package is used to run the multiple scripts at same time like for backend and frontend at same time..
 
 
 
@@ -135,6 +137,189 @@ In summary:
 //PUT Request:-  done with these check code...
 //PATCH Request:- done with these check code...
 //DELETE Request:- done with these check code...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Middlewares:- Dalla in hindi
+just a function which works b/w two different functions; we can use middleware functions to add and extra functionality for things which can share same logic;
+
+hma middleware ka use isliye krte hai taki ham additional chijee check kr sake before doing the actual things
+
+Note: middleware is register in the app after creating the app and before the all methods in b/w both ok...
+
+(req,res,next)=>{};
+
+this next is also take argument new Error("Error ok")
+next(new Error("Error"));
+
+//How it works suppose we send req. to our route but in b/w we set ek middleware to request phle uspe aygi fir aage ka kaam hoga vo bhi tab jab hm next function ko call karege agarnahi kiya to aage work nahi kaeraga kuch bhi udhr se hi return hojayga.
+
+** Ham middleware ko 2 tarike se add krte hai :--
+
+1. app.use(ourMiddlewareName);
+
+2. app.get("/api/users", ourMiddlewareName,(req,res)=>{
+  // rest of the code
+});
+
+
+
+//** Validations in Express.js
+
+we have to validate the data before saving that into the database because sometimes there are isssue even though we have client side form validation, server-side validation is more important that that.
+
+***package called express-validator we use here;***
+npm i express-validator
+
+import {query, validationResults, body, matchData} from "express-validator";
+
+//query for query params ka validation,
+//validationResults for getting errors info,
+//body for writing validation on the client side data,
+//matchData function for getting and matching the validate data and then use this valid data to save in db;
+
+query for validate the query field and validationResults is a function that  takes and req as argument and return the biodata of errors and other things
+
+**/ we have two way of writing and validation like register on top but it not working fine and 2nd way is write into method like register just like middleware in the array form [
+  write your validation here all
+]
+
+
+
+
+
+
+
+
+* Routes *
+routs in express are like small aplication in it; we are using routes in seprate folder and file and after making that we register them to main app.ok as middleware
+
+folder:- routes -> userRoute.js
+                   productRoute.js ,etc...
+
+const router = Router();
+export default router;
+
+on server.js
+
+app.use("/api/users", userRoute);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
