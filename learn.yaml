@@ -21,6 +21,8 @@ use krna acha hai is package ko kahi bar import export of env variable me issue 
 📦Packege no.2 => concurrently npm i concurrently
 => this package is used to run the multiple scripts at same time like for backend and frontend at same time..
 
+📦packege no.3 => cookie-parser
+=> this is most famous package used for parsed the cookies from the client into proper format for setup it we have to instal it and import from package and app.use(cookie-parser()).
 
 
 
@@ -222,30 +224,98 @@ app.use("/api/users", userRoute);
 
 
 
+*/ Cookies /*
+
+cookies are the small piece of data which can be store on the client side and later it sends back to server with each request of the user...means (suppose hmne ek cart system banaya user ne cart pe items store kiye to hmene first time  usko cookie bji on login/regsiter krne par ab user data add krkek 1 week baad akar duabar jab server ko requests krta hai to usko vahi items mil jate hai dekhne ko ye hota hai cookies ko agar hm cookie ko localstorage me store nhi krte hai to server or https ko nhi pata ki user kon hai.  isliye stateless ko statefull banaya jata hai cookies ki help se )
+
+Note:- hamesha cookie res data se upar bjni hoti hai ya set krni hoti hai because it is like headers vrana error ayga.
+
+res.cookie("name of cookie", "value of cookie", {options
+ maxAge : kab tak valid hai,
+ expires : new Date("2022-12-31"),
+ httpOnly : true,
+ secure : true,
+ path : "/" // by default it is /
+})
+
+ //?sending cookies to client when user visit routs
+  res.cookie("socks", "10-peice", {
+    maxAge: 60000,
+    expires: new Date(Date.now() + 900000), // 15 minutes
+    httpOnly: true, // The cookie is only accessible via HTTP requests
+    secure: true, // The cookie should only be sent over secure connections (HTTPS)
+  });
+
+  //**=>getting response cookie from client with each request
+  console.log(req.headers.cookie);
+
+  //!after install cookie-parser and setup that as middleware in server file we log this console and get the actual parsed cookie;
+  console.log(req.cookies);
+
+Note:- hame agar client se ati hui cookie ko read krna hai to req.headers.cookies se hi higi varna nhai;
+
+# req.headers.cookie;
+# req.cookies;
 
 
 
 
 
+HTTPs are stateless they dont remember users;
 
 
 
 
 
+*/ Sessions /*
+a session is a way to store the data across multiple request from the same client.It helps maintain user state, like whether they're logged in or what preferences they've selected, during their interaction with a web application.
+
+Stateful Web Apps: HTTP is stateless (it doesn't remember users between requests), so sessions help you keep track of users across multiple requests.
+
+Security: Sessions store sensitive information server-side instead of exposing it on the client (like cookies do).
+
+⭐⭐⭐⭐=> The session data are stored as server-side, while the sessionID is stored in a cookie on the client.
+
+by means of above line is :::----
+this is cookie on client side=> s%3Aro7IfrGAcW_ULxrg9fqmPZxCYj3sZ4J3.aCQ58Kq8n53tTlVw%2Bz%2BTppETLdY%2BtXN7VcAGNV7toeo
+
+this is session => Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-03-18T12:58:19.273Z,
+    originalMaxAge: 6000000,
+    httpOnly: true
+  }
+}
+
+this is session ki id => ro7IfrGAcW_ULxrg9fqmPZxCYj3sZ4J3
+
+//tum is id ko us cookie me dekh skte hooo;
 
 
+=> Store Options: By default, session data is stored in memory, which isn't suitable for production. Use session stores like Redis, MongoDB, or MySQL for better performance and scalability.
 
+Difference b/w cookies and session are :-
 
+1. Storage Location;
 
+cookie=>  Stored on the client-side (in the browser). 	
+session=> Stored on the server. A session ID is sent to the client.
 
+2.Security
 
+cookie=> Stored in plaintext, so it can be easily intercepted.   
+session=> Stored in encrypted form, making it harder for attackers to intercept.
 
+3. size
 
+cookie=> Can be up to 4KB.   
+session=> Can be up to 4MB. or more...
 
+4. Use cases
 
-
-
-
+cookie=> For storing user preferences, authentication, and temporary data.   
+session=> For maintaining user state across multiple requests.
 
 
 
