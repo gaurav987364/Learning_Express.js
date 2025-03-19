@@ -1,45 +1,83 @@
+//! Learning databases (Mongo Db & Mongoose).
 import express from "express";
 import { configDotenv } from "dotenv";
 import cookieParser from "cookie-parser";
-//?import session package
+import passport from "passport";
 import session from "express-session";
+//import db
+import connection from "./database/connect.js";
+import User from "./schemas/user.js";
 
-configDotenv();
+//import mongo store for sessions storage
+import MongoStore from "connect-mongo";
+
+//hash function
+import bcryptjs from "bcryptjs";
+// import strategy file
+import "./strategies/local2.js";
+import mongoose from "mongoose";
 
 const port = process.env.PORT || 4000;
+
+configDotenv();
 const app = express();
 
+//connect to db
+connection();
 app.use(express.json());
 app.use(cookieParser());
-//setup session middleware
-//! Sessions :- (register before all routes middleware)
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "hshshshhhdhddh",
     resave: false,
-    saveUninitialized: false, //for now
+    saveUninitialized: false, // for now
     cookie: {
-      maxAge: 6000000, //10 minutes
-      // secure: process.env.NODE_ENV === "production", //?if true, the cookie will only be sent over HTTPS
+      maxAge: 3600000 * 24 * 30, // 30 days
+      httpOnly: true,
+      secure: false, // set to true for https
     },
+    store: MongoStore.create({
+      client: mongoose.connection.getClient(),
+      autoRemove: "every Day",
+      // remove expired sessions every day
+    }),
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get("/api/users", (req, res) => {
-  console.log(req.session); //? access session data
-  console.log(req.sessionID); // or sessin.id
+app.post("/api/users", async (req, res) => {
+  const { username, password, email } = req.body;
 
-  //store data in session
-  req.session.visited = true; // before doing this step every time on every requst the new session is created which is wrong
-  req.session.user = { name: "Gaurav", age: 25 };
-  console.log(req.session.user);
+  if (!username || !password || !email) {
+    return res.status(400).send("All fields are required");
+  }
 
-  //sending cookie
-  res.cookie("hi", "session ki hello", {
-    expires: new Date(Date.now() + 600000), //10 minutes
-    httpOnly: true,
-  });
-  res.status(200).json({ message: "Hello World!" });
+  //hasing the pasowrd
+  const salt = bcryptjs.genSaltSync(10);
+  const hashedPassword = bcryptjs.hashSync(password, salt);
+
+  // create a new user
+  const newUser = new User({ username, password: hashedPassword, email });
+  // save the user
+  try {
+    const savedUser = await newUser.save();
+    res.send(savedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(400).send("Server error");
+  }
+});
+
+//login
+app.post("/api/auth", passport.authenticate("local"), (req, res) => {
+  console.log(req.session);
+  if (req.user) {
+    res.send({
+      message: "Logged in successfully",
+      user: req.user,
+    });
+  }
 });
 
 app.listen(port, () => {

@@ -292,6 +292,7 @@ this is session ki id => ro7IfrGAcW_ULxrg9fqmPZxCYj3sZ4J3
 
 //tum is id ko us cookie me dekh skte hooo;
 
+=> Cart system flow => jab user ne website pr login kiye to usko ek cookie bji gyi with session id ok, ab jab user let suppose alag alag route pr interact krega to har bar ek session generate hoga but for same id ok, now user ne cart me product add kiye to server pr session se hmne data nikal kr db me store kr diya ab jab next time kuch din badd user vapas akr cart check krega login se cookie jaygi to for that session se cart ka data usko send kr dege ok is tarike se session ka use kiya jata hai user ke interaction ka hisab kitab rakhne ke liye....
 
 => Store Options: By default, session data is stored in memory, which isn't suitable for production. Use session stores like Redis, MongoDB, or MySQL for better performance and scalability.
 
@@ -322,16 +323,58 @@ session=> For maintaining user state across multiple requests.
 
 
 
+*/ Passport.js & Authentication /*;
+=> Passport.js is a authentication middleware for node.js
+
+ npm i passport passport-local 
+ //passport is package and passport-local is the strategy;
+
+isme basiaclly hm package ka use kr rhe hai for session generate and verify user;
+
+
+steps:-
+ on server.js file
+
+import passport from passport;
+
+//setup middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//create folder called strategies and file with strategy name inside it
+
+in this file we have to import two things one is passport package and the other is Strategy class from passport-local strategy package;
+
+export default passport.use(
+  new Strategy({options}, (username,password,done)=>{
+    // find user by username
+
+    //add validation check for user credentials
+
+    //if everything perfect to call done function
+    done(null, user); // send user
+
+    catch(error){
+      done(error, null)
+    }
+    })
+);
+
+// Now is file me hi ab 2 function or banage for seriealize user and de-seriealize user ok
+
+//make routes for that but setting the middleware in that route
+app.post("/api/auth", passport.authenticate, (req,res)=>{});
 
 
 
 
 
 
+/* DataBases */ (NoSql db);
 
+session store in db +> ham isliye krte hai taki agara server down jaye to session db me rahe varna to server restart se sab reset hojyag kyuki by default session store in memory;
 
-
-
+we have to store the session in db using package called connect-mongo;
 
 
 
