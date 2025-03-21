@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "hshshshhhdhddh",
-    resave: false,
+    resave: false, //update the time of cookie on every request and resave it
     saveUninitialized: false, // for now
     cookie: {
       maxAge: 3600000 * 24 * 30, // 30 days
