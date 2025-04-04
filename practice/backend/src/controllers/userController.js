@@ -24,7 +24,7 @@ const createUser = async (req, res, next) => {
   next();
 };
 
-const loginUser = async (req, res, next) => {
+const loginUser = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(404).send({
