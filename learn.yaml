@@ -380,7 +380,19 @@ we have to store the session in db using package called connect-mongo;
 
 //=>access token vs refresh token in depth:-
 
+JWT(accessToken + refrshToken) is called jwt which contains :[
+  header:[
+    algo:"256",
+    type:"JWT"
+  ],
+  payload: { it is user data like name, email etc.},
+  signature:"our-256-bit-secret-key"
+]
 
+
+
+access token are short lived for like 15m
+refresh token are long lived like 7days or 30d;
 
 
 
