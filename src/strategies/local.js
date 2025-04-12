@@ -8,7 +8,7 @@ export const mockUser = [
   { id: 3, username: "Alice", password: "pqr789", email: "alice@example.com" },
 ];
 
-//! on sending port requests sabse phle chalgea last wana code and uske liye chalega serialize user function and then agar hme dubara click krte hai to chlega deserialize user function
+//! on sending post requests sabse phle chalgea last wana code and uske liye chalega serialize user function and then agar hme dubara click krte hai to chlega deserialize user function
 //for that error : - Failed to serialize user into session
 //?this function just store the user data into session
 passport.serializeUser((user, done) => {
@@ -32,7 +32,7 @@ passport.deserializeUser((id, done) => {
 });
 
 export default passport.use(
-  //? idhr is strategy me callback se phle ek option ka option ata hai jisme ham specify krte hai kuch chije like abhi to hm simple username me name le re hai but ye generally emial hota hai to hme us option me { usernamefield: "emial"}, batana pdta hai ok
+  //? idhr is strategy me callback se phle ek option ka option ata hai jisme ham specify krte hai kuch chije like abhi to hm simple username me name le re hai but ye generally emial hota hai to hme us option me { usernamefield: "email"}, batana pdta hai ok
   new Strategy((username, password, done) => {
     try {
       const findUser = mockUser.find((user) => user.username === username);
