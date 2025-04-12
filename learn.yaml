@@ -396,7 +396,13 @@ refresh token are long lived like 7days or 30d;
 
 
 
-//
+What is the "User-Agent" header?
+The User-Agent header identifies the software making the HTTP request to the server, usually a web browser, mobile app, or other HTTP client. It provides information about:
+
+
+1. - Browser Type (e.g., Chrome, Firefox, Safari).
+2. - Operating System (e.g., Windows, macOS, Android).
+3. - Platform (e.g., Desktop, Mobile).
 
 
 
