@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome Page</title>
+</head>
+<body>
+  <h1>Hello, <%= name %>!</h1>
+  <p>Your hobbies include:</p>
+  <ul>
+    <% hobbies.forEach(hobby => { %>
+      <li><%= hobby %></li>
+    <% }) %>
+  </ul>
+</body>
+</html>
