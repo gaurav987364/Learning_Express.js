@@ -1,0 +1,17 @@
+day-1 at mushin learn about any production git repo ko kese clone kare and usme hame 2 chije yaad rkahni hai main koi data delete nhi krna hai and hame agar test krana hai to .env me jakar phle main db ko comment kerege and then local db use krege ok;
+
+#kisi bi production ki github repo me mainly thing hai usko bina password and id ya access token ke save nhi kr skte hai ya clone nhi kr skte hai to phlee hme kuch steps follow krnehai;
+
+step-1
+goto developer setting of github and then genereate access token with with life time expiry;
+
+step-2
+copy the url of that repo
+
+step-3
+make folder jisme tumhe clone krna haai and then usme simpley ye comman use kro 
+
+=> git clone https://johnDoe:ghp_xyzABC1234567890@github.com/johnDoe/my-private-repo.git
+
+
+// Now learning about excel upload and download,
