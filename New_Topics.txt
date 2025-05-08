@@ -13,5 +13,17 @@ make folder jisme tumhe clone krna haai and then usme simpley ye comman use kro
 
 => git clone https://johnDoe:ghp_xyzABC1234567890@github.com/johnDoe/my-private-repo.git
 
+// pull request banana using any cmd or bash;
+
+// ab jab git ka pull request banaya hai dusre account par to main local account me commit ni hoga to hme ab ye steps follow krne hai then commit krna hai 
+- Open Windows Credential Manager:
+- Press Win + R, type control, and press Enter.
+- Navigate to User Accounts → Credential Manager → Windows Credentials (or Generic Credentials).
+- Find the GitHub Credentials:
+- Look for entries related to github.com or entries that start with git: (for example, git:https://github.com).
+- There might be an entry associated with gsMushin. Remove that credential.
+
+
+
 
 // Now learning about excel upload and download,
