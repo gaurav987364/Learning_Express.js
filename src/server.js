@@ -11,6 +11,8 @@ app.set("view engine", "ejs");
 
 // Define a route
 app.get("/", (req, res) => {
+  // Render the EJS template with data
+  
   const data = {
     name: "Gaurav",
     hobbies: ["Coding", "Gaming", "Cycling"],
