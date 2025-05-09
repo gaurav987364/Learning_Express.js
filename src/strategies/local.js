@@ -3,7 +3,7 @@ import passport from "passport";
 import { Strategy } from "passport-local"; //this is Class constructor
 
 export const mockUser = [
-  { id: 1, username: "Don", password: "xyz123", email: "don@example.com" },
+  { id: 1, username: "Dona", password: "xyz123", email: "don@example.com" },
   { id: 2, username: "Jane", password: "abc456", email: "jane@example.com" },
   { id: 3, username: "Alice", password: "pqr789", email: "alice@example.com" },
 ];
