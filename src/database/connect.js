@@ -6,7 +6,7 @@ const connection = () => {
       dbName: "learning_express",
     })
     .then(() => {
-      console.log("Connected to MongoDB");
+      console.log("Connected to MongoDB Successfully ✅");
     })
     .catch((err) => {
       console.error("Error connecting to MongoDB", err);
