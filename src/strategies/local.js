@@ -1,6 +1,6 @@
-//file name local means our strategy is of type local ok
+//file name local means our strategy is of type local ok.
 import passport from "passport";
-import { Strategy } from "passport-local"; //this is Class constructor
+import { Strategy } from "passport-local"; //this is Class constructor.
 
 export const mockUser = [
   { id: 1, username: "Dona", password: "xyz123", email: "don@example.com" },
