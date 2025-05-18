@@ -1,5 +1,4 @@
-//? this file is for database like for original one ;
-
+//? this file is for database like for original one;
 import passport from "passport";
 import { Strategy } from "passport-local";
 import User from "../schemas/user.js";
