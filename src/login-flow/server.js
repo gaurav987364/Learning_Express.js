@@ -1,4 +1,4 @@
-//! Learning databases (Mongo Db & Mongoose).
+//! Learning databases (Mongo Db & Mongoose)...
 import express from "express";
 import { configDotenv } from "dotenv";
 import cookieParser from "cookie-parser";
