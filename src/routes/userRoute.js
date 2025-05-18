@@ -28,10 +28,10 @@ router.get("/", (req, res) => {
   });
 
   //?getting response cookie from client with each request
-  //! we log this below console to read cookies but get undefine or not-parsed cookie
+  //! we log this below console to read cookies but get undefined or not-parsed cookie
   console.log(req.headers.cookie);
 
-  //!after install cookie-parser and setup that as middleware in server file we log this console and get the actual parsed cookie;
+  //!after install cookie-parser and setup that as middleware in server.js file we log this console and get the actual parsed cookie;
   console.log(req.cookies);
 
   res.status(200).send([
