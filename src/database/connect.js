@@ -9,7 +9,7 @@ const connection = () => {
       console.log("Connected to MongoDB Successfully✅");
     })
     .catch((err) => {
-      console.error("Error connecting to MongoDB", err);
+      console.error("Error connecting to MongoDB❌", err);
     });
 };
 
