@@ -29,3 +29,6 @@ make folder jisme tumhe clone krna haai and then usme simpley ye comman use kro
 // Now learning about excel upload and download,
 
 // Git ka bare me thoda kuch seekhna hai ok;
+
+
+//Notes on github SSH/SSG keys setup 
