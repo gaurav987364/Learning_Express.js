@@ -160,14 +160,14 @@ original header sent in a request, and then server resposnse with this , means c
 *.Advanced error handling (e.g., centralized error management).
 *.Debugging Express.js applications.
 
-7. Security Best Practices-
+7. Security Best Practices-:
 
 *.Securing your application from common vulnerabilities (e.g., SQL injection, XSS, CSRF).
 *.Using HTTPS and encrypting sensitive data.
 *.Secure authentication flows (e.g., OAuth, JWT).
 *.Helmet.js for securing HTTP headers.
 
-8. Deployment-
+8. Deployment-:
 
 *.Setting up the environment variables.
 *.Hosting Express apps:
