@@ -32,3 +32,5 @@ make folder jisme tumhe clone krna haai and then usme simpley ye comman use kro
 
 
 //Notes on github SSH/SSG keys setup 
+
+//setup steps and login as well
