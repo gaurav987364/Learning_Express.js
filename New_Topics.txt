@@ -40,3 +40,14 @@ make folder jisme tumhe clone krna haai and then usme simpley ye comman use kro
 // Taking pull of the any branch
 git checkout branchname
 git pull origin branchname
+
+// Agar maine koi branch bna diya hai to uss branch ko remote pe push krne ke liye
+git push -u origin branchname
+
+// Agar maine koi branch bna diya hai to uss branch ko local pe delete krne ke liye
+git branch -d branchname
+
+// Agar maine koi branch bna diya hai to uss branch ko remote pe delete krne ke liye
+git push origin --delete branchname
+
+git pull origin branchname
