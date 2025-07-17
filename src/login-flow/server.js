@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "",
+    secret: process.env.SESSION_SECRET || "SESSION_SECRET",
     resave: false, //update the time of cookie on every request and resave it
     saveUninitialized: false, // for now
     cookie: {
