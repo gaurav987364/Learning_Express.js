@@ -93,9 +93,6 @@ Note:-- Here is point to remember that when we send request from our client to o
 
 
 
-
-
-
 Q:-- Difference b/w Put and Patch req.???;
 
 PUT:->The PUT method is used for full updates. It completely replaces the current state of a resource with the data provided in the request.
