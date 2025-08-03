@@ -86,7 +86,7 @@ app.post("/api/users",(req,res)=>{
 
 Note:-- Here is point to remember that when we send request from our client to our route and console.log(req.body) it print undefined to the console because express ko hame batana padega ki hm jo data bj rahe hai vo hm json me bj rahe hai to hme express me middleware setup krna padega 
 
-#app.use(express.json()); isko invoke krake is tarike se ok;;
+#app.use(express.json()); isko invoke krake is tarike se ok;
 
 
 
