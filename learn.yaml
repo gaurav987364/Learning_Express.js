@@ -74,7 +74,7 @@ https://localhost:4000/api/users?sort=name&value=gaurav
 
 
 
-//POST request--
+//POST request-->
 
 it means we (client) send data to server an after validate that data server is store this into database; simple;
 just like get request we see response data in the console or browser we dont send data from browser to server we need to use tools like Postman and thunderclient extension in vs code ok;
