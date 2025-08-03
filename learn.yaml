@@ -81,7 +81,7 @@ just like get request we see response data in the console or browser we dont sen
 
 all of the data from client we recieve in the req.body always ok;
 
-so we make post request to server
+so we make post request to server,
 
 app.post("/api/users",(req,res)=>{
   const {name,email,passsword} =  req.body;
