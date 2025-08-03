@@ -71,9 +71,6 @@ https://localhost:4000/api/users?sort=name&value=gaurav
 
 
 
-
-
-
 //POST request-->
 
 it means we (client) send data to server an after validate that data server is store this into database; simple;
