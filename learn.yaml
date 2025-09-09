@@ -310,8 +310,6 @@ session=> For maintaining user state across multiple requests.
 
 
 
-
-
 */ Passport.js & Authentication /*;
 => Passport.js is a authentication middleware for node.js
 
