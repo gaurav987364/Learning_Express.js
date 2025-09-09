@@ -263,7 +263,7 @@ Stateful Web Apps: HTTP is stateless (it doesn't remember users between requests
 
 Security: Sessions store sensitive information server-side instead of exposing it on the client (like cookies do).
 
-⭐⭐⭐⭐=> The session data are stored as server-side, while the sessionID is stored in a cookie on the client.
+⭐⭐⭐⭐ => The session data are stored as server-side, while the sessionID is stored in a cookie on the client.
 
 by means of above line is :::----
 this is cookie on client side=> s%3Aro7IfrGAcW_ULxrg9fqmPZxCYj3sZ4J3.aCQ58Kq8n53tTlVw%2Bz%2BTppETLdY%2BtXN7VcAGNV7toeo
